@@ -38,3 +38,14 @@ spending = best customers), helping businesses target offers better.
 - Works best with spherical clusters.
 - Features must be scaled.
 - Not suitable for categorical data.
+
+- ## Data Source
+Mall Customers dataset (Kaggle). Features: CustomerID, Gender, Age,
+Annual Income (k$), Spending Score (1-100).
+
+## Preprocessing Steps
+1. Removed duplicate rows and missing values.
+2. Encoded Gender (Male=0, Female=1).
+3. Selected features: Gender, Age, Annual Income, Spending Score.
+4. Normalized features using StandardScaler (mean 0, std 1).
+5. Validated data: no NaN, no infinite values, enough rows for clustering.
