@@ -49,3 +49,33 @@ Annual Income (k$), Spending Score (1-100).
 3. Selected features: Gender, Age, Annual Income, Spending Score.
 4. Normalized features using StandardScaler (mean 0, std 1).
 5. Validated data: no NaN, no infinite values, enough rows for clustering.
+
+6. ## Implementation Details
+
+The project is implemented in Python using pandas, NumPy, scikit-learn
+and matplotlib.
+
+### Pipeline Structure
+- `load_data()` loads the dataset and checks it is not empty.
+- `preprocess()` removes duplicates and missing values, then scales
+  features using StandardScaler.
+- `validate()` checks for NaN or infinite values and a valid number of clusters.
+- `cluster()` runs K-Means with K-Means++ initialization.
+- `run_pipeline()` connects all the steps and returns the segmented data.
+
+### Notebooks
+- `segmentation.ipynb`: first basic K-Means implementation
+- `data_pipeline.ipynb`: data preparation and validation
+- `core_segmentation.ipynb`: core feature with edge cases and tests
+- `integration.ipynb`: complete end-to-end pipeline with tests
+
+### Testing
+End-to-end tests check that the pipeline adds a Cluster column, gives the
+expected number of clusters, produces the same result on every run, and
+raises errors for invalid inputs.
+
+### Results
+Using K=3, customers are grouped into three segments:
+- Young customers with high spending scores
+- Older customers with low spending scores
+- Younger customers with medium spending scores
