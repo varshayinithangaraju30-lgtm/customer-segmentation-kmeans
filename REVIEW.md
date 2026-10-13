@@ -24,4 +24,26 @@
 - Choose K using the Elbow method and Silhouette score.
 - Add better plots and cluster profiles.
 - Move shared code into a .py module.
+
+- ## Week 2 Review: Issues Fixed and Remaining
+
+### Fixed in Week 2
+- Shared code moved into a reusable module (`segmentation.py`), so
+  notebooks no longer repeat the same functions.
+- Evaluation metrics added: Silhouette score and Calinski-Harabasz index.
+- Visualization improved: PCA 2D plot with centroids and cluster
+  profile bar chart.
+- Interactive dashboard added to explore clusters with different K values.
+- Hyperparameter tuning added (K, init, n_init, max_iter) using
+  silhouette score.
+- Unit tests added for evaluation metrics and visualization.
+- Performance testing added for different data sizes.
+- Refactored module tested in `refactor_test.ipynb`.
+
+### Still pending
+- The dataset still has only 20 sample rows. The full Mall Customers
+  dataset (200 rows) should be used for final results.
+- Notebooks still contain some older copies of the functions. They can
+  be updated to import from `segmentation.py`.
+- Final README update with metrics, plots and cluster descriptions.
   
