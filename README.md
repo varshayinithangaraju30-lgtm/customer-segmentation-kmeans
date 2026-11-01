@@ -79,3 +79,69 @@ Using K=3, customers are grouped into three segments:
 - Young customers with high spending scores
 - Older customers with low spending scores
 - Younger customers with medium spending scores
+
+- ## Advanced Features (Week 3)
+
+### Hierarchical Clustering and DBSCAN
+- `advanced_clustering.ipynb` adds Hierarchical (agglomerative) clustering
+  and DBSCAN alongside K-Means.
+- Hierarchical clustering does not need K to be chosen in advance.
+- DBSCAN finds clusters of any shape and marks outliers as noise (-1).
+- All three methods are compared using the silhouette score and
+  PCA 2D plots.
+
+### Interactive Dashboard
+- `dashboard_ui.ipynb` provides an interactive dashboard with a K slider
+  and X/Y axis dropdowns.
+- Each cluster gets a readable name (e.g., "Young High Spenders") and a
+  summary card showing customer count and average age, income and spending.
+- Hovering over a point shows customer details.
+
+## Optimization Techniques
+
+### Parallel Processing and Caching
+- `performance_optimization.ipynb` runs K-Means for different K values in
+  parallel using `joblib.Parallel` on all CPU cores.
+- Results are cached with `joblib.Memory`, so a repeated run returns
+  almost instantly.
+- Tests check that parallel and cached results match the sequential run.
+
+### Hyperparameter Tuning
+- `hyperparameter_tuning.ipynb` searches over K, init, n_init and max_iter
+  and picks the best combination by silhouette score.
+
+## Code Quality, Logging and Monitoring
+
+### Code Quality
+- `segmentation.py` is a reusable module with type hints, docstrings,
+  logging and clear error messages.
+- Inputs are validated (missing columns, non-numeric data, invalid K).
+
+### Logging and Monitoring
+- `monitored_pipeline.py` logs every workflow step to `segmentation.log`.
+- Metrics (rows used, cluster sizes, inertia, silhouette score, run time)
+  are saved to `metrics.json`.
+- Warnings are logged when the silhouette score is low, a cluster is very
+  small, or the workflow is slow.
+
+## Testing
+- Unit tests cover evaluation metrics, visualization, the segmentation
+  module, parallel processing and the monitored pipeline.
+- Performance tests check run time and memory for up to 20,000 rows.
+
+## Notebooks Overview
+| Notebook | Purpose |
+|----------|---------|
+| `evaluation_metrics.ipynb` | Silhouette and Calinski-Harabasz scores |
+| `visualization.ipynb` | PCA plots and cluster profiles |
+| `dashboard_ui.ipynb` | Interactive dashboard |
+| `hyperparameter_tuning.ipynb` | Grid search for K-Means settings |
+| `advanced_clustering.ipynb` | Hierarchical clustering and DBSCAN |
+| `performance_optimization.ipynb` | Parallel processing and caching |
+| `code_quality.ipynb` | Improved module with logging and validation |
+| `logging_monitoring.ipynb` | Logging and monitoring |
+
+## Limitations and Next Steps
+- The dataset in this repo is a 20-row sample. The full Mall Customers
+  dataset (200 rows) should be used for final results.
+- User testing feedback will be added after responses are collected.
